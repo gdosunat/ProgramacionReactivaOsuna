@@ -3,14 +3,23 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeModule } from './pages/home/home.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { IsAlivePipe } from './pipes/is-alive.pipe';
+import { PipesModule } from './pipes/pipes.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HomeModule,
+    NgbModule,
+    PipesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

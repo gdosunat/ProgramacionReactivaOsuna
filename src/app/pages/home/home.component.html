@@ -1,0 +1,29 @@
+<h1 class="text-center">
+    Personajes de Harry Potter
+</h1>
+<div class="row mx-2">
+    <mat-form-field class="col-4">
+        <mat-label>Filtrar por nombre</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Hermione" #input>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="col-4">
+        <mat-label>Casa</mat-label>
+        <mat-select (selectionChange)="casaFilter()" [formControl]="casaControl">
+            <mat-option value="{{casa}}" *ngFor="let casa of casas">{{casa}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+<div class="d-flex flex-wrap">
+    <mat-card class="example-card my-2 mx-4" *ngFor="let personaje of personajes" style="width:20pc;">
+        <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{personaje.nombre}} {{personaje.apellido}}</mat-card-title>
+        <mat-card-subtitle>{{personaje.casa}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="{{personaje.img}}" alt="Photo of a Shiba Inu" style="max-height: 20pc;">
+        <mat-card-content class="pb-2 px-2">
+            <span [ngClass]="personaje.vivo ? 'badge text-bg-primary' : 'badge text-bg-danger'">{{personaje.vivo | isAlive}}</span>
+            <p><strong>Patronus:</strong>{{personaje.patronus}}</p>
+        </mat-card-content>
+    </mat-card>
+</div>
